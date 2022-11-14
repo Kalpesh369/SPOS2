@@ -1,0 +1,24 @@
+package FIFO;
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+public class FIFO
+{
+	public static void main(String[]args)
+	{
+		Queue<String> queue = new LinkedList<String>();
+		queue.add("100");
+		queue.add("200");
+		queue.add("300");
+		queue.add("400");
+		queue.add("500");
+		System.out.println("The newly created queue is: "+queue);
+		String value = (String)queue.remove();
+		System.out.println("The deleted element from the above queue is: "+value);
+		System.out.println("The current queue is: "+queue);
+		String head = (String)queue.peek();
+		System.out.println("The head of the above queue is: "+head);
+		int size = queue.size();
+		System.out.println("The size of the above queue is: "+size);
+	}
+}
