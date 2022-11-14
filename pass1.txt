@@ -1,0 +1,91 @@
+package pass1;
+import java.io.*;
+public class pass1
+{
+	public static void main(String args[])throws Exception
+	{
+		FileReader FP=new FileReader("src\\input");
+		BufferedReader bufferedReader = new BufferedReader(FP);
+		String line=null;
+		int line_count=0,LC=0,symTabLine=0,litTabLine=0;
+		 //Data Structures
+		 final int MAX=100;
+		 String SymbolTab[][]=new String[MAX][3];
+		 
+		 String LitTab[][]=new String[MAX][2];
+		 System.out.println("_________________");
+		    while((line = bufferedReader.readLine()) != null)
+		     {
+		     	 String[] tokens = line.split("\t");
+		     	if(line_count==0)
+		     	{
+		     		LC=Integer.parseInt(tokens[1]);					
+		     												//set LC to operand of START
+		     		for(int i=0;i<tokens.length;i++)		//for printing the input program
+		     	 		System.out.print(tokens[i]+"\t");
+		     	 	System.out.println("");
+		     	}
+		     	else
+		     	{
+			     	 for(int i=0;i<tokens.length;i++) //for printing the input program
+			     	 	System.out.print(tokens[i]+"\t");
+			     	 System.out.println("");
+			     	if(!tokens[0].equals(""))
+			     	{
+			 
+			     		//Inserting into Symbol Table
+			     		SymbolTab[symTabLine][0]=tokens[0];
+			     		SymbolTab[symTabLine][1]=Integer.toString(LC);
+			     		SymbolTab[symTabLine][2]=Integer.toString(1);
+			     		symTabLine++;
+			     	}
+				if(tokens.length==3 && tokens[2].charAt(0)=='=')
+				{
+					//Entry of literals into literal table
+					LitTab[litTabLine][0]=tokens[2];
+			     		LitTab[litTabLine][1]=Integer.toString(LC);
+			     		litTabLine++;
+				}
+	
+		       }
+		        line_count++;
+		        LC++;
+		    }   
+
+			System.out.println("_________________");  
+
+			//print symbol table
+			System.out.println("\n\n	SYMBOL TABLE		");
+			System.out.println("--------------------------");			
+			System.out.println("SYMBOL\tADDRESS\tLENGTH");
+			System.out.println("--------------------------");			
+			for(int i=0;i<symTabLine;i++)
+				System.out.println(SymbolTab[i][0]+"\t"+SymbolTab[i][1]+"\t"+SymbolTab[i][2]);
+			System.out.println("--------------------------");
+			//print literal table
+			System.out.println("\n\n   LITERAL TABLE		");
+			System.out.println("-----------------");			
+			System.out.println("LITERAL\tADDRESS");
+			System.out.println("-----------------");			
+			for(int i=0;i<litTabLine;i++)
+				System.out.println(LitTab[i][0]+"\t"+LitTab[i][1]);
+			System.out.println("------------------");
+    
+	}
+}
+START	100	
+	READ	A	
+LABLE	MOVER	A,B	
+	LTORG	
+		='5'	
+		='1'	
+		='6'	
+		='7'	
+	MOVEM	A,B	
+	LTORG	
+		='2'	
+LOOP	READ	B	
+A	DS	1	
+B	DC	'1'	
+		='1'	
+	END
