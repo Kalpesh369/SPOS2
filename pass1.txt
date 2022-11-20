@@ -4,7 +4,7 @@ public class pass1
 {
 	public static void main(String args[])throws Exception
 	{
-		FileReader FP=new FileReader("src\\input");
+		FileReader FP=new FileReader("C:\\Users\\AAYUSH\\OneDrive\\Desktop\\src.txt");
 		BufferedReader bufferedReader = new BufferedReader(FP);
 		String line=null;
 		int line_count=0,LC=0,symTabLine=0,litTabLine=0;
