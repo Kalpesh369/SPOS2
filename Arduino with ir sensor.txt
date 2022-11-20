@@ -1,0 +1,19 @@
+// C++ code
+//
+int irsensor = 2;
+int led = 11;
+
+void setup()
+{
+	pinMode(led,OUTPUT);
+  	pinMode(irsensor,INPUT);
+}
+
+void loop()
+{
+	int sensorvalue = digitalRead(irsensor);
+  	if(sensorvalue == 1)
+      digitalWrite(led,LOW);
+  	else
+      digitalWrite(led,HIGH);
+}

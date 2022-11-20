@@ -1,0 +1,34 @@
+int sensor_value;
+
+int temp_c;
+
+int temp_f;
+
+float vout;
+
+void setup()
+{
+	pinMode(13,OUTPUT);
+  	pinMode(A0,INPUT);
+  
+}
+void loop()
+{
+	int sensor_value = analogRead(A0);
+  
+  	vout = sensor_value*(5000/1024.0);
+  
+  	temp_c=(vout-500)/10;
+  
+  	temp_f=(temp_c*9)/5+32;
+  
+  	if(temp_c>15)
+    {
+    	digitalWrite(13,HIGH);
+    
+    }
+  	else
+    {
+    	digitalWrite(13,LOW);
+    }
+}
