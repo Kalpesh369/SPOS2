@@ -3,3 +3,9 @@ float a,b ;
         b=Float.parseFloat(jTextField2.getText());
         float c= a+b;
         jTextField3.setText("Addition : "+c);
+        
+        
+        
+        3 label val1 val2 answer 
+        4 button addition sub 
+        3 text fiels value store 
